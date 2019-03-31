@@ -38,7 +38,7 @@ class Ball
 
 bool active = true;
 bool normal = false;
-int gDelay = 200;
+int gDelay = 1000;
 
 class Gport
 {
@@ -52,10 +52,10 @@ class Gport
     void setOutput(bool input) {
       if (input) {
         //in case Ball has been punched, Brightsign active value is set
-        digitalWrite(pin, active);
+        digitalWrite(13, active);
         delay(gDelay);//wait for BS to get pulse
       } else {
-        digitalWrite(pin, normal);
+        digitalWrite(13, normal);
       }
     }
 
@@ -69,6 +69,14 @@ Ball ball2(2, 400);
 Ball ball3(3, 400);
 Ball ball4(4, 400);
 Ball ball5(5, 400);
+
+//instancing gpio outputs:
+Gport gport0(2);
+Gport gport1(3);
+Gport gport2(4);
+Gport gport3(5);
+Gport gport4(6);
+Gport gport5(7);
 
 void setup()
 {
@@ -87,11 +95,17 @@ void loop()
 
   //refresh punched value according to curr value and thresh
   ball0.updatePunch();
+  ball1.updatePunch();
+  ball2.updatePunch();
+  ball3.updatePunch();
+  ball4.updatePunch();
+  ball5.updatePunch();
 
-  //Serial.println(String(ball0.getPunched()));
-
-  if (ball0.getPunched()) {
-    Serial.println("PUNCHED");
-    delay(1000);
-  } else {}
+  //output ball state to BS:
+  gport0.setOutput(ball0.getPunched());
+  gport1.setOutput(ball1.getPunched());
+  gport2.setOutput(ball2.getPunched());
+  gport3.setOutput(ball3.getPunched());
+  gport4.setOutput(ball4.getPunched());
+  gport5.setOutput(ball5.getPunched());
 }
