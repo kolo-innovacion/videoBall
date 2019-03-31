@@ -34,11 +34,16 @@ class Ball
     }
 };
 
-const int PIEZO_PIN = A0; // Piezo output
+//const int PIEZO_PIN = A0; // Piezo output
 
-int curr = 5;
+//int curr = 5;
 
-Ball ballX(curr, 400);
+Ball ball0(0, 100);
+Ball ball1(1, 400);
+Ball ball2(2, 400);
+Ball ball3(3, 400);
+Ball ball4(4, 400);
+Ball ball5(5, 400);
 
 void setup()
 {
@@ -47,8 +52,21 @@ void setup()
 
 void loop()
 {
-  //  int piezoADC = analogRead(PIEZO_PIN);
-  ballX.readValue();
+  //read all values:
+  ball0.readValue();
+  ball1.readValue();
+  ball2.readValue();
+  ball3.readValue();
+  ball4.readValue();
+  ball5.readValue();
 
-  Serial.println(ballX.getValue());
+  //refresh punched value according to curr value and thresh
+  ball0.setPunched();
+
+  //Serial.println(String(ball0.getPunched()));
+
+  if (ball0.getPunched()) {
+    Serial.println("PUNCHED");
+    delay(1000);
+  } else {}
 }
