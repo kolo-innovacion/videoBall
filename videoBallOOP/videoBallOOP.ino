@@ -38,7 +38,7 @@ class Ball
 
 bool active = true;
 bool normal = false;
-int gDelay = 1000;
+int gDelay = 200;
 
 class Gport
 {
@@ -52,10 +52,12 @@ class Gport
     void setOutput(bool input) {
       if (input) {
         //in case Ball has been punched, Brightsign active value is set
-        digitalWrite(13, active);
+        digitalWrite(pin, active);
         delay(gDelay);//wait for BS to get pulse
+        Serial.println("Punched ball: " + String(pin - 2));
+
       } else {
-        digitalWrite(13, normal);
+        digitalWrite(pin, normal);
       }
     }
 
