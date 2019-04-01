@@ -53,15 +53,23 @@ class Gport
       pinMode(pin, OUTPUT);
       pinMode(ledPin, OUTPUT);
     }
+
+    void setActive() {
+      digitalWrite(pin, active);
+      digitalWrite(ledPin, HIGH);
+      delay(gDelay);
+    }
+    void setNormal() {
+      digitalWrite(pin, normal);
+      digitalWrite(ledPin, LOW);
+    }
     void setOutput(bool input) {
       if (input) {
         //in case Ball has been punched, Brightsign active value is set
-        digitalWrite(pin, active);
-        delay(gDelay);//wait for BS to get pulse
-        Serial.println("Punched ball: " + String(pin - 2));
-
+        setActive();
+        setNormal();
       } else {
-        digitalWrite(pin, normal);
+        setNormal();
       }
     }
 
