@@ -46,22 +46,26 @@ class Gport
     int ledPin;
 
   public:
+
+    void setNormal() {
+      digitalWrite(pin, normal);
+      digitalWrite(ledPin, LOW);
+    }
+
     Gport(int gp, int lp) {
       pin = gp;
       ledPin = lp;
 
       pinMode(pin, OUTPUT);
       pinMode(ledPin, OUTPUT);
+
+      setNormal();
     }
 
     void setActive() {
       digitalWrite(pin, active);
       digitalWrite(ledPin, HIGH);
       delay(gDelay);
-    }
-    void setNormal() {
-      digitalWrite(pin, normal);
-      digitalWrite(ledPin, LOW);
     }
     void setOutput(bool input) {
       if (input) {
