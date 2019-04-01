@@ -127,22 +127,3 @@ void loop()
   gport4.setOutput(ball4.getPunched());
   gport5.setOutput(ball5.getPunched());
 }
-
-void loop1()
-{
-  //output ball state to BS:
-  gport0.setOutput(true);
-  gport1.setOutput(true);
-  gport2.setOutput(true);
-  gport3.setOutput(true);
-  gport4.setOutput(true);
-  gport5.setOutput(true);
-
-
-  gport0.setOutput(false);
-  gport1.setOutput(false);
-  gport2.setOutput(false);
-  gport3.setOutput(false);
-  gport4.setOutput(false);
-  gport5.setOutput(false);
-}
