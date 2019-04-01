@@ -38,7 +38,7 @@ class Ball
 
 bool active = true;
 bool normal = false;
-int gDelay = 500;
+int gDelay = 1000;
 
 class Gport
 {
@@ -77,7 +77,7 @@ class Gport
 
 //instancing ball objects:
 
-Ball ball0(0, 100);
+Ball ball0(0, 400);
 Ball ball1(1, 400);
 Ball ball2(2, 400);
 Ball ball3(3, 400);
@@ -97,7 +97,7 @@ void setup()
   Serial.begin(9600);
 }
 
-void loop0()
+void loop()
 {
   //read all values:
   ball0.readValue();
@@ -124,7 +124,7 @@ void loop0()
   gport5.setOutput(ball5.getPunched());
 }
 
-void loop()
+void loop1()
 {
   //output ball state to BS:
   gport0.setOutput(true);
