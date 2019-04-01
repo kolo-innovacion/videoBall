@@ -43,11 +43,15 @@ int gDelay = 200;
 class Gport
 {
     int pin;
+    int ledPin;
 
   public:
-    Gport(int p) {
-      pin = p;
+    Gport(int gp, int lp) {
+      pin = gp;
+      ledPin = lp;
+
       pinMode(pin, OUTPUT);
+      pinMode(ledPin, OUTPUT);
     }
     void setOutput(bool input) {
       if (input) {
@@ -73,12 +77,12 @@ Ball ball4(4, 400);
 Ball ball5(5, 400);
 
 //instancing gpio outputs:
-Gport gport0(2);
-Gport gport1(3);
-Gport gport2(4);
-Gport gport3(5);
-Gport gport4(6);
-Gport gport5(7);
+Gport gport0(12, 13);
+Gport gport1(10, 3);
+Gport gport2(8, 5);
+Gport gport3(6, 7);
+Gport gport4(4, 9);
+Gport gport5(2, 11);
 
 void setup()
 {
