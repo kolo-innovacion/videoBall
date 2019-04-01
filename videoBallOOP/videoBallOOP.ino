@@ -59,6 +59,9 @@ class Gport
       pinMode(pin, OUTPUT);
       pinMode(ledPin, OUTPUT);
 
+      digitalWrite(ledPin, HIGH);
+      delay(200);
+
       setNormal();
     }
 
