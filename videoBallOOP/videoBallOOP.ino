@@ -38,7 +38,7 @@ class Ball
 
 bool active = true;
 bool normal = false;
-int gDelay = 1000;
+int gDelay = 500;
 
 class Gport
 {
@@ -58,13 +58,13 @@ class Gport
 
       pinMode(pin, OUTPUT);
       pinMode(ledPin, OUTPUT);
-
-      digitalWrite(ledPin, HIGH);
-      delay(200);
-
       setNormal();
     }
-
+    void blinkOnce() {
+      digitalWrite(ledPin, HIGH);
+      delay(250);
+      digitalWrite(ledPin, LOW);
+    }
     void setActive() {
       digitalWrite(pin, active);
       digitalWrite(ledPin, HIGH);
@@ -102,6 +102,12 @@ Gport gport5(2, 11);
 void setup()
 {
   Serial.begin(9600);
+  gport0.blinkOnce();
+  gport1.blinkOnce();
+  gport2.blinkOnce();
+  gport3.blinkOnce();
+  gport4.blinkOnce();
+  gport5.blinkOnce();
 }
 
 void loop()
