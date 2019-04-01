@@ -1,3 +1,25 @@
+//variables para configuración:
+
+//paso 0) teniendo todo conectado, conecta el Arduino a la PC, verifica en herramientas que la placa, procesador y puerto COM sean los correctos [Arduino NANO, AtMega328P (Old Bootloader), COM XX]
+
+//paso 1)  elije la pelota [0-5] de la que quieres mostrar su valor y asigna el valor en la variable showBall:
+int showBall = 3;
+
+//paso 2)  una vez visualizado su valor promedio en herramientas-serial plotter, golpea la pelota y observa el valor que obtiene
+//asigna en las siguientes variables el valor mínimo para considerar la pelota como golpeada; cada pelota tiene su propio threshold
+
+int thresh0 = 400;
+int thresh1 = 400;
+int thresh2 = 400;
+int thresh3 = 400;
+int thresh4 = 400;
+int thresh5 = 400;
+
+//paso 3) guarda este código [CTRL+S] y súbelo a la placa [CTRL+U]
+
+//paso 4) verifica que el LED correspondiente se encienda al golpear la pelota; la salida GPIO cambiará su estado al ser golpeada
+
+
 //Ball class definition:
 class Ball
 {
@@ -84,12 +106,12 @@ class Gport
 
 //instancing ball objects:
 
-Ball ball0(0, 400);
-Ball ball1(1, 400);
-Ball ball2(2, 400);
-Ball ball3(3, 400);
-Ball ball4(4, 400);
-Ball ball5(5, 400);
+Ball ball0(0, thresh0);
+Ball ball1(1, thresh1);
+Ball ball2(2, thresh2);
+Ball ball3(3, thresh3);
+Ball ball4(4, thresh4);
+Ball ball5(5, thresh5);
 
 //instancing gpio outputs:
 Gport gport0(12, 13);
@@ -112,6 +134,8 @@ void setup()
 
 void loop()
 {
+  //display for calibration:
+  Serial.println(analogRead(showBall));
   //read all values:
   ball0.readValue();
   ball1.readValue();
