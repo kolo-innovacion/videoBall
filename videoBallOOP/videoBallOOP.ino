@@ -1,4 +1,4 @@
-//variables para configuración:
+//INICIO DE INSTRUCCIONES
 
 //paso 0) teniendo todo conectado, conecta el Arduino a la PC, verifica en herramientas que la placa, procesador y puerto COM sean los correctos [Arduino NANO, AtMega328P (Old Bootloader), COM XX]
 
@@ -19,6 +19,7 @@ int thresh5 = 400;
 
 //paso 4) verifica que el LED correspondiente se encienda al golpear la pelota; la salida GPIO cambiará su estado al ser golpeada
 
+//FIN DE INSTRUCCIONES
 
 //Ball class definition:
 class Ball
@@ -60,6 +61,7 @@ class Ball
 
 bool active = true;
 bool normal = false;
+
 int gDelay = 500;
 
 class Gport
